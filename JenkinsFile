@@ -11,18 +11,10 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('Generate serenity report') {
-            steps {
-                script {
-                serenity([
-                        includeProperties: false,
-                        jdk              : '',
-                        properties       : [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results          : [[path: 'target/sit/serenity/index.html']]
-                    ])
-                }
-            }
+    }
+    post{
+         always {
+            junit 'target/site/serenity/index.html'
         }
     }
 }
