@@ -11,15 +11,15 @@ pipeline {
                 bat 'mvn test'
             }
         }
-        stage('Generate allure report') {
+        stage('Generate serenity report') {
             steps {
                 script {
-                    allure([
-                            includeProperties: false,
-                            jdk              : '',
-                            properties       : [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results          : [[path: 'target/allure-results']]
+                serenity([
+                        includeProperties: false,
+                        jdk              : '',
+                        properties       : [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results          : [[path: 'target/sit/serenity/index.html']]
                     ])
                 }
             }
