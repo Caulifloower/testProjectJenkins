@@ -14,7 +14,7 @@ pipeline {
     }
     post{
          always {
-             junit '**/target/site/serenity/SERENITY-JUNIT*'
+             junit 'target/site/serenity/SERENITY-JUNIT*'
          }
     }
 }
